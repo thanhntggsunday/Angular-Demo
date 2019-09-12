@@ -33,6 +33,8 @@ export class ProductAddEditComponent implements OnInit {
     this.addOrEdit = this._activatedRoute.snapshot.params.addOrEdit;
     var id = this._activatedRoute.snapshot.params.id;
 
+    this.productViewModel.Content = '';
+
     if (this.addOrEdit == 'add') {
       this.title = 'THÊM MỚI PRODUT';
     }
@@ -122,6 +124,11 @@ export class ProductAddEditComponent implements OnInit {
       }
     }
   }
+
+  public keyupHandlerContentFunction(e: any) {
+    this.productViewModel.Content = e;
+  }
+
 
   
 

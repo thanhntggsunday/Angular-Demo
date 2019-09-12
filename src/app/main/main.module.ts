@@ -17,6 +17,6 @@ import { SimpleTinymcComponent } from './shared/simple-tinymc/simple-tinymc.comp
     RouterModule.forChild(mainRoutes)
   ], 
   providers: [AuthenService, DataService, NotificationService,UploadService],
-  declarations: [MainComponent, TopMenuComponent, SidebarMenuComponent, SimpleTinymcComponent]
+  declarations: [MainComponent, TopMenuComponent, SidebarMenuComponent]
 })
 export class MainModule { }
