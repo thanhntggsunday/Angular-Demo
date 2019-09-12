@@ -39,7 +39,7 @@ export class UserRolesComponent implements OnInit {
 
     this._dataService.post(url, this.bodyData)
       .subscribe((response: any) => {
-        this.userRoles = response.userRolesList;
+        this.userRoles = response.UserRolesList;
         console.log(this.userRoles);       
 
       },
@@ -56,16 +56,17 @@ export class UserRolesComponent implements OnInit {
     this.loadData();
   }
 
-  deleteItem(id: any) {
+  deleteItem(uid: any, roleName: any) {
     this._notificationService.printConfirmationDialog(MessageContstants.CONFIRM_DELETE_MSG,
-      () => this.deleteItemConfirm(id));
+      () => this.deleteItemConfirm(uid, roleName));
   }
 
-  deleteItemConfirm(id: any) {
-    this.bodyData = { RoleId: id };
-    this._dataService.post(SystemConstants.API_ROLE_SERVICE_DELETE, this.bodyData)
-      .subscribe((response: Response) => {
-        this._notificationService.printSuccessMessage(MessageContstants.DELETED_OK_MSG);
+  deleteItemConfirm(uid: any, roleName: any) {
+    this.bodyData = { UserId: uid, RoleName: roleName };
+    this._dataService.post(SystemConstants.API_USER_ROLES_SERVICE_DELETE, this.bodyData)
+      .subscribe((response: any) => {
+        // ReturnMessage
+        this._notificationService.printSuccessMessage(response.ReturnMessage);
         this.loadData();
       });
   }

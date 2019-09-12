@@ -22,7 +22,7 @@
       <div class="x_title">
         <ul class="nav navbar-right panel_toolbox">
           <li>
-            <button class="btn btn-success" routerLink="/main">Thêm mới</button>
+            <button class="btn btn-success" routerLink="/main/user-roles/add-edit/add">Thêm mới</button>
           </li>
 
         </ul>
@@ -48,7 +48,7 @@
                 <!-- <button class="btn btn-primary" routerLink="/main/role/add-edit/edit">
                   <i class="fa fa-pencil-square-o"></i>
                 </button> -->
-                <button class="btn btn-danger" (click)="deleteItem(0)"><i class="fa fa-trash"></i></button>
+                <button class="btn btn-danger" (click)="deleteItem(ur.UserId, ur.RoleName)"><i class="fa fa-trash"></i></button>
 
               </td>
             </tr>

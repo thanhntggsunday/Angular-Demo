@@ -1,3 +1,59 @@
-<p>
-  user-roles-add-edit works!
-</p>
+<div class="page-title">
+  <div class="title_left">
+    <h3>{{title}}</h3>
+  </div>
+</div>
+
+<div class="clearfix"></div>
+
+<div class="row">
+
+  <div class="clearfix"></div>
+
+  <div class="x_panel">
+    <div class="x_title">
+      <ul class="nav navbar-right panel_toolbox">
+        <li>
+          <button class="btn btn-primary" (click)="goBack()">Quay lại</button>
+        </li>
+      </ul>
+      <div class="clearfix"></div>
+    </div>
+    <div class="x_content">
+      <form class="form-horizontal form-label-left input_mask" novalidate #addEditForm="ngForm"
+        (ngSubmit)="saveChanges(addEditForm.valid)">
+
+        <div class="form-group">
+          <label class="control-label col-md-3 col-sm-3 col-xs-12">User</label>
+          <div class="col-md-9 col-sm-9 col-xs-12">
+            <select class="form-control" name="userId" [(ngModel)]="userRolesViewModel.UserId">
+              <option value="">--Chọn user--</option>
+              <option *ngFor="let u of users" [value]="u.Id">{{u.Email}}</option>
+            </select>
+            <input type="hidden" [(ngModel)]="userRolesViewModel.UserId" name="userId" class="form-control" />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="control-label col-md-3 col-sm-3 col-xs-12">User</label>
+          <div class="col-md-9 col-sm-9 col-xs-12">
+            <select class="form-control" name="RoleName" [(ngModel)]="userRolesViewModel.RoleName">
+              <option value="">--Chọn role--</option>
+              <option *ngFor="let r of roles" [value]="r.Name">{{r.Name}}</option>
+            </select>
+            <input type="hidden" [(ngModel)]="userRolesViewModel.RoleName" name="RoleName" class="form-control" />
+          </div>
+        </div>
+
+        <div class="ln_solid"></div>
+        <div class="form-group">
+          <div class="col-md-9 col-sm-9 col-xs-12 col-md-offset-3">
+            <button type="submit" class="btn btn-success" [disabled]="!addEditForm.form.valid">Save</button>
+          </div>
+        </div>
+
+      </form>
+    </div>
+  </div>
+
+</div>

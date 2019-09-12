@@ -17,40 +17,15 @@ export class DataService {
     this.headers.append('Content-Type', 'application/json');
   }
 
-  get(uri: string) {
-    this.headers.delete("Authorization");
-    this.headers.append("Authorization", "Bearer " + this._authenService.getLoggedInUser().access_token);
-    return this._http.get(SystemConstants.BASE_API + uri, { headers: this.headers }).map(this.extractData);
-  }
+  
   post(uri: string, data?: any) {
     this.headers.delete("Authorization");
     this.headers.append("Authorization", "Bearer " + this._authenService.getLoggedInUser().access_token);
     var result = this._http.post(SystemConstants.BASE_API + uri, data, { headers: this.headers }).map(this.extractData)
     return result;
-  }
-  put(uri: string, data?: any) {
-    this.headers.delete("Authorization");
-    this.headers.append("Authorization", "Bearer " + this._authenService.getLoggedInUser().access_token);
-    return this._http.put(SystemConstants.BASE_API + uri, data, { headers: this.headers }).map(this.extractData);
-  }
-  delete(uri: string, key: string, id: string) {
-    this.headers.delete("Authorization");
-    this.headers.append("Authorization", "Bearer " + this._authenService.getLoggedInUser().access_token);
-    return this._http.delete(SystemConstants.BASE_API + uri + "/?" + key + "=" + id, { headers: this.headers })
-      .map(this.extractData);
-  }
-  deleteWithMultiParams(uri: string, params) {
-    this.headers.delete('Authorization');
-
-    this.headers.append("Authorization", "Bearer " + this._authenService.getLoggedInUser().access_token);
-    var paramStr: string = '';
-    for (let param in params) {
-      paramStr += param + "=" + params[param] + '&';
-    }
-    return this._http.delete(SystemConstants.BASE_API + uri + "/?" + paramStr, { headers: this.headers })
-      .map(this.extractData);
-
-  }
+  } 
+  
+  
   postFile(uri: string, data?: any) {
     let newHeader = new Headers();
     newHeader.append("Authorization", "Bearer " + this._authenService.getLoggedInUser().access_token);
@@ -59,8 +34,7 @@ export class DataService {
   }
   private extractData(res: Response) {
     let body = res.json();
-    console.log('body:');
-    console.log(body);
+  
     return body || {};
   }
   public handleError(error: any) {

@@ -25,9 +25,6 @@ export class RoleComponent implements OnInit {
     Pager: {}
   };
 
-  public titleOfModal: string = 'Add / Edit';
-
-
   constructor(private _dataService: DataService, private _notificationService: NotificationService,
     public _authenService: AuthenService, private _utilityService: UtilityService) {
 
@@ -38,7 +35,7 @@ export class RoleComponent implements OnInit {
   }
 
   loadData() {
-    var url = SystemConstants.API_ROLE_SERVICE_GET_ALL;
+    var url = SystemConstants.API_ROLE_SERVICE_GET_ALL_PAGING;
 
     this.bodyData.Pager = {
       TotalRows: this.totalRow,

@@ -1,0 +1,137 @@
+<div class="page-title">
+  <div class="title_left">
+    <h3>{{title}}</h3>
+  </div>
+</div>
+
+<div class="clearfix"></div>
+
+<div class="row">
+
+  <div class="clearfix"></div>
+
+  <div class="x_panel">
+    <div class="x_title">
+      <ul class="nav navbar-right panel_toolbox">
+        <li>
+          <button class="btn btn-primary" (click)="goBack()">Quay lại</button>
+        </li>
+      </ul>
+      <div class="clearfix"></div>
+    </div>
+    <div class="x_content">
+      <form class="form-horizontal form-label-left input_mask" novalidate #addEditForm="ngForm"
+        (ngSubmit)="saveChanges(addEditForm.valid)"  >
+
+        <div class="form-group">
+          <label class="control-label col-md-3 col-sm-3 col-xs-12">Tên category</label>
+          <div class="col-md-9 col-sm-9 col-xs-12">
+            <input type="hidden" [(ngModel)]="categoryViewModel.ID" name="id" />
+            <input type="text"  required minlength="3" class="form-control"
+              name="name" class="form-control" #Name="ngModel" [(ngModel)]="categoryViewModel.Name">
+            <small [hidden]="Name.valid || (Name.pristine && !addEditForm.submitted)"
+              class="text-danger">
+              Bạn phải nhập tên category
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="control-label col-md-3 col-sm-3 col-xs-12">Alias</label>
+          <div class="col-md-9 col-sm-9 col-xs-12">           
+            <input type="text"  required minlength="3" class="form-control"
+              name="Alias" class="form-control" #Alias="ngModel" [(ngModel)]="categoryViewModel.Alias">
+            <small [hidden]="Alias.valid || (Alias.pristine && !addEditForm.submitted)"
+              class="text-danger">
+              Bạn phải nhập Alias
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="control-label col-md-3 col-sm-3 col-xs-12">Mô tả</label>
+          <div class="col-md-9 col-sm-9 col-xs-12">           
+            <textarea type="text"   class="form-control"
+              name="Description" class="form-control" #Description="ngModel" [(ngModel)]="categoryViewModel.Description">
+            </textarea>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="control-label col-md-3 col-sm-3 col-xs-12">DisplayOrder</label>
+          <div class="col-md-9 col-sm-9 col-xs-12">           
+            <input type="text"   class="form-control"
+              name="DisplayOrder" class="form-control" #DisplayOrder="ngModel" [(ngModel)]="categoryViewModel.DisplayOrder">
+           
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="control-label col-md-3 col-sm-3 col-xs-12">Ảnh</label>
+          <div class="col-md-9 col-sm-9 col-xs-12">           
+            <input type="text"   class="form-control"
+              name="Image" disabled class="form-control"  [value]="categoryViewModel.Image">
+          
+
+            <label>Chọn ảnh</label>
+            <input type="file" required #imagePath name="imagePath" class="form-control">
+            <p class="help-block label label-danger"> chỉ hỗ trợ định dạng *.png, *.jpg, *.jpeg </p>
+           
+            <input type="hidden" [(ngModel)]="categoryViewModel.Image" name="imagePath" />
+            <br /> <br />
+            <button type="button" (click)="saveProductCategoryImage()" class="btn btn-primary mt-24" >Upload</button>
+
+          </div>
+          <br />
+        </div>
+
+       
+
+        <div class="form-group">
+          <label class="control-label col-md-3 col-sm-3 col-xs-12">MetaKeyword</label>
+          <div class="col-md-9 col-sm-9 col-xs-12">           
+            <input type="text"   class="form-control"
+              name="MetaKeyword" class="form-control" #MetaKeyword="ngModel" [(ngModel)]="categoryViewModel.MetaKeyword">
+           
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="control-label col-md-3 col-sm-3 col-xs-12">MetaDescription</label>
+          <div class="col-md-9 col-sm-9 col-xs-12">           
+            <input type="text"   class="form-control"
+              name="MetaDescription" class="form-control" #MetaDescription="ngModel" [(ngModel)]="categoryViewModel.MetaDescription">
+           
+          </div>
+        </div>
+       
+        <div class="form-group">
+          <label class="control-label col-md-3 col-sm-3 col-xs-12">Trạng thái</label>
+          <div class="col-md-9 col-sm-9 col-xs-12">
+            <div class="checkbox">
+              <label>
+                 <input type="checkbox" [(ngModel)]="categoryViewModel.Status" name="status" #status="ngModel"> Kích hoạt
+              </label>
+            </div>
+            <div class="checkbox">
+              <label>
+                 <input type="checkbox" [(ngModel)]="categoryViewModel.HomeFlag" name="homeFlag" #status="ngModel"> Hiển thị trang chủ
+              </label>
+            </div>
+          </div>
+        </div>      
+
+      
+        <div class="ln_solid"></div>
+
+        <div class="form-group">
+          <div class="col-md-9 col-sm-9 col-xs-12 col-md-offset-3">
+            <button type="submit" class="btn btn-success" [disabled]="!addEditForm.form.valid">Save</button>
+          </div>
+        </div>
+
+      </form>
+    </div>
+  </div>
+
+</div>
