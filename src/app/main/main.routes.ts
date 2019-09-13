@@ -20,6 +20,11 @@ export const mainRoutes: Routes = [
 
             { path: 'user-roles', loadChildren: './user-roles/user-roles.module#UserRolesModule' },
 
+            { path: 'post-category', loadChildren: './post-category/post-category.module#PostCategoryModule' },
+
+            { path: 'post', loadChildren: './post/post.module#PostModule' },
+
+
             { path: 'unauthorised', loadChildren: './unauthorised/unauthorised.module#UnauthorisedModule' }
 
 

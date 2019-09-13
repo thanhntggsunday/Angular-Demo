@@ -1,0 +1,178 @@
+<div class="page-title">
+  <div class="title_left">
+    <h3>{{title}}</h3>
+  </div>
+</div>
+
+<div class="clearfix"></div>
+
+<div class="row">
+
+  <div class="clearfix"></div>
+
+  <div class="x_panel">
+    <div class="x_title">
+      <ul class="nav navbar-right panel_toolbox">
+        <li>
+          <button class="btn btn-primary" (click)="goBack()">Quay lại</button>
+        </li>
+      </ul>
+      <div class="clearfix"></div>
+    </div>
+    <div class="x_content">
+      <form class="form-horizontal form-label-left input_mask" novalidate #addEditForm="ngForm"
+        (ngSubmit)="saveChanges(addEditForm.valid)">
+
+        <div class="form-group">
+            <label class="control-label col-md-3 col-sm-3 col-xs-12">Trạng thái</label>
+            <div class="col-md-9 col-sm-9 col-xs-12">
+              <div class="checkbox">
+                <label>
+                  <input type="checkbox" [(ngModel)]="orderViewModel.Status" name="status" #status="ngModel"> Kích hoạt
+                </label>
+              </div>
+             
+            </div>
+          </div>
+
+          <div class="form-group">
+              <label class="control-label col-md-3 col-sm-3 col-xs-12">Payment Status</label>
+              <div class="col-md-9 col-sm-9 col-xs-12">           
+                <input type="text"  required minlength="3" class="form-control"
+                  name="PaymentStatus" class="form-control" #PaymentStatus="ngModel" [(ngModel)]="orderViewModel.PaymentStatus">
+                <small [hidden]="PaymentStatus.valid || (PaymentStatus.pristine && !addEditForm.submitted)"
+                  class="text-danger">
+                  Bạn phải nhập Payment Status
+                </small>
+              </div>
+            </div>
+
+        <div class="form-group">
+          <label class="control-label col-md-3 col-sm-3 col-xs-12">Tên khách hàng</label>
+          <div class="col-md-9 col-sm-9 col-xs-12">
+            <input type="hidden" [(ngModel)]="orderViewModel.ID" name="id" />
+            <input type="text" disabled class="form-control" name="name" class="form-control"
+              [value]="orderViewModel.CustomerName">
+
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="control-label col-md-3 col-sm-3 col-xs-12">Address</label>
+          <div class="col-md-9 col-sm-9 col-xs-12">
+
+            <input type="text" disabled class="form-control" name="name" class="form-control"
+              [value]="orderViewModel.CustomerAddress">
+
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="control-label col-md-3 col-sm-3 col-xs-12">Email</label>
+          <div class="col-md-9 col-sm-9 col-xs-12">
+
+            <input type="text" disabled class="form-control" name="name" class="form-control"
+              [value]="orderViewModel.CustomerEmail">
+
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="control-label col-md-3 col-sm-3 col-xs-12">Mobile</label>
+          <div class="col-md-9 col-sm-9 col-xs-12">
+
+            <input type="text" disabled class="form-control" name="name" class="form-control"
+              [value]="orderViewModel.CustomerMobile">
+
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="control-label col-md-3 col-sm-3 col-xs-12">Customer message</label>
+          <div class="col-md-9 col-sm-9 col-xs-12">
+
+              <input type="text" disabled class="form-control" name="name" class="form-control"
+                [value]="orderViewModel.CustomerMessage">
+  
+            </div>
+        </div>
+
+        <div class="form-group">
+          <label class="control-label col-md-3 col-sm-3 col-xs-12">Payment Method</label>
+          <div class="col-md-9 col-sm-9 col-xs-12">
+
+              <input type="text" disabled class="form-control" name="name" class="form-control"
+                [value]="orderViewModel.PaymentMethod">
+  
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-3 col-sm-3 col-xs-12">Created By</label>
+            <div class="col-md-9 col-sm-9 col-xs-12">
+  
+                <input type="text" disabled class="form-control" name="name" class="form-control"
+                  [value]="orderViewModel.CreatedBy">
+    
+              </div>
+          </div>
+
+          <div class="form-group">
+              <label class="control-label col-md-3 col-sm-3 col-xs-12">Total Price</label>
+              <div class="col-md-9 col-sm-9 col-xs-12">
+    
+                  <input type="text" disabled class="form-control" name="name" class="form-control"
+                    [value]="orderViewModel.TotalPrice">
+      
+                </div>
+            </div>
+
+       
+
+
+        <div class="ln_solid"></div>
+        
+
+        <div class="ln_solid"></div>
+
+        <div class="form-group">
+          <div class="col-md-9 col-sm-9 col-xs-12 col-md-offset-3">
+            <button type="submit" class="btn btn-success" [disabled]="!addEditForm.form.valid">Save</button>
+          </div>
+        </div>
+
+      </form>
+    </div>
+  </div>
+
+</div>
+
+<div class="row">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+      <div class="x_panel">
+        
+        <div class="x_content">
+  
+          <table class="table table-bordered col-md-6">
+            <thead>
+              <tr>
+                <th>Order ID</th>
+                <th>Product Name</th>
+                <th>Quantity</th>
+               
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let od of orderViewModel.OrderDetailDTOs">
+                <td>{{od.OrderID}}</td>
+                <td>{{od.ProductName}}</td>
+                <td>{{od.Quantitty}}</td>            
+               
+              </tr>
+            </tbody>
+          </table>
+         
+        </div>
+      </div>
+    </div>
+  </div>
