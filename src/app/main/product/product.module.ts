@@ -5,7 +5,8 @@ import { Routes, RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { PaginationModule } from 'ngx-bootstrap/pagination';
 import { ProductAddEditComponent } from './product-add-edit/product-add-edit.component';
-import { SimpleTinymcComponent } from '../shared/simple-tinymc/simple-tinymc.component';
+// import { SimpleTinymcComponent } from '../shared/simple-tinymc/simple-tinymc.component';
+import { SimpleTinymcModule } from '../shared/simple-tinymc/simple-tinymc.module';
 
 const productRoutes: Routes = [
   //localhost:4200/main/user
@@ -21,8 +22,10 @@ const productRoutes: Routes = [
     CommonModule,
     RouterModule.forChild(productRoutes),
     PaginationModule.forRoot(),
-    FormsModule
+    FormsModule,
+    SimpleTinymcModule
+    
   ], 
-  declarations: [ProductComponent, ProductAddEditComponent, SimpleTinymcComponent]
+  declarations: [ProductComponent, ProductAddEditComponent]
 })
 export class ProductModule { }

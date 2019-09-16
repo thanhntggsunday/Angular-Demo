@@ -5,7 +5,8 @@ import { Routes, RouterModule } from '@angular/router';
 import { PostAddEditComponent } from './post-add-edit/post-add-edit.component';
 import { PaginationModule } from 'ngx-bootstrap/pagination';
 import { FormsModule } from '@angular/forms';
-import { SimpleTinymcComponent } from '../shared/simple-tinymc/simple-tinymc.component';
+import { SimpleTinymcModule } from '../shared/simple-tinymc/simple-tinymc.module';
+// import { SimpleTinymcComponent } from '../shared/simple-tinymc/simple-tinymc.component';
 
 const postRoutes: Routes = [
   //localhost:4200/main/user
@@ -20,8 +21,9 @@ const postRoutes: Routes = [
     CommonModule,
     RouterModule.forChild(postRoutes),
     PaginationModule.forRoot(),
-    FormsModule
+    FormsModule,
+    SimpleTinymcModule
   ],
-  declarations: [PostComponent, PostAddEditComponent, SimpleTinymcComponent]
+  declarations: [PostComponent, PostAddEditComponent]
 })
 export class PostModule { }

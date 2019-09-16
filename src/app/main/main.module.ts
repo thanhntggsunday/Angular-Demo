@@ -10,11 +10,13 @@ import { mainRoutes } from './main.routes';
 import { TopMenuComponent } from './shared/top-menu/top-menu.component';
 import { SidebarMenuComponent } from './shared/sidebar-menu/sidebar-menu.component';
 import { SimpleTinymcComponent } from './shared/simple-tinymc/simple-tinymc.component';
+import { SimpleTinymcModule } from './shared/simple-tinymc/simple-tinymc.module';
 
 @NgModule({
   imports: [
     CommonModule,   
-    RouterModule.forChild(mainRoutes)
+    RouterModule.forChild(mainRoutes),
+    SimpleTinymcModule
   ], 
   providers: [AuthenService, DataService, NotificationService,UploadService],
   declarations: [MainComponent, TopMenuComponent, SidebarMenuComponent]
