@@ -41,6 +41,10 @@ export class UserRolesAddEditComponent implements OnInit {
     this.loadData();
   }
 
+  public goBack() {
+    this._utilityService.navigate('/main/user-roles/index');
+  }
+
   loadData() {
     this._dataService.post(SystemConstants.API_USER_ROLES_SERVICE_GET_ALL_USERS_AND_ROLES_LIST,
       this.userRolesViewModel)
