@@ -41,7 +41,8 @@ export class ProductCategoryAddEditComponent implements OnInit {
         JSON.stringify(this.categoryViewModel))
       .subscribe((response: any) => {
         this.categoryViewModel = response;        
-      }, error => this._dataService.handleError(error));
+      }, 
+      error => this._dataService.handleError(error));
 
     }
   }
@@ -73,12 +74,13 @@ export class ProductCategoryAddEditComponent implements OnInit {
         this._dataService.post(SystemConstants.API_PRODUCT_CATEGORY_SERVICE_UPDATE, 
           JSON.stringify(this.categoryViewModel))
           .subscribe((response: any) => {
-            this.categoryViewModel = response;
-            this._notificationService.printSuccessMessage(this.categoryViewModel.ReturnMessage[0]);
-            this._utilityService.navigate('/main/product-category/index');
-  
-          },
-          error => this._dataService.handleError(error));
+              this.categoryViewModel = response;
+              this._notificationService.printSuccessMessage(this.categoryViewModel.ReturnMessage[0]);
+              this._utilityService.navigate('/main/product-category/index');
+    
+            },
+            error => this._dataService.handleError(error)
+          );
       }
       
 

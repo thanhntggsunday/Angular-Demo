@@ -49,7 +49,10 @@ export class DataService {
       this._utilityService.navigateToLogin();
     }
     else {
-      let errMsg = JSON.parse(error._body).Message;
+      let errBody = JSON.parse(error._body);
+      // let errMsg = JSON.parse(error._body).Message;
+      let errMsg = errBody.ReturnMessage[0];
+
       this._notificationService.printErrorMessage(errMsg);
 
       return Observable.throw(errMsg);
