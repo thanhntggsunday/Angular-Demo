@@ -27,7 +27,7 @@
     "moment": "^2.24.0",
     "ngx-bootstrap": "^2.0.5",
     "rxjs": "^5.4.2",
-    "tinymce": "^5.0.15",
+    "tinymce": "^5.1.4",
     "zone.js": "^0.8.14"
   },
   "devDependencies": {
