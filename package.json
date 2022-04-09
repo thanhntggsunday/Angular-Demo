@@ -24,7 +24,7 @@
     "alertifyjs": "^1.11.4",
     "core-js": "^2.4.1",
     "gentelella": "^1.4.0",
-    "moment": "^2.24.0",
+    "moment": "^2.29.2",
     "ngx-bootstrap": "^2.0.5",
     "rxjs": "^5.4.2",
     "tinymce": "^5.0.15",
